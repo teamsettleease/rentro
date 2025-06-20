@@ -1,0 +1,430 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f7f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    background: #222;
+    color: #fff;
+    padding: 0.7em 2em;
+    flex-shrink: 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+nav a {
+    color: #ffd700;
+    text-decoration: none;
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+main {
+    background: #fff;
+    max-width: 480px;
+    margin: 2em auto 1em auto;
+    padding: 1.5em 2em;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    flex: 1;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1em 0;
+}
+
+h2, h3 {
+    color: #007bff;
+    margin-top: 0;
+}
+
+h3 span {
+    color: green;
+}
+
+footer {
+    text-align: center;
+    font-size: 1em;
+    margin-top: auto;
+    border-top: 1px solid #444;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Align left and right sections */
+    align-items: center; /* Vertically center items */
+    background: #222;
+    padding: 0.5em 1em;
+    border-radius: 8px;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center; /* Ensure vertical alignment */
+    gap: 1em; /* Space between links */
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center; /* Ensure vertical alignment */
+    gap: 1em; /* Space between links */
+}
+
+.navbar a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 0.3em 0.8em;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar a:hover,
+.navbar a:focus {
+    background: #ffd700;
+    color: #222;
+}
+
+.user-name {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 0.3em 0.8em;
+    border-radius: 4px;
+    background: #444; /* Optional background for better visibility */
+}
+
+.home-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #f7f7f9;
+    padding: 0;
+}
+
+.hero {
+    background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%);
+    color: #fff;
+    padding: 6em 2em;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h2 {
+    font-size: 3em;
+    margin-bottom: 1em;
+}
+
+.hero p {
+    font-size: 1.5em;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about, .vision {
+    padding: 4em 2em;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about {
+    background: #f8f9fa;
+}
+
+.vision {
+    background: #fff;
+}
+
+.about h3, .vision h3 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    color: #007bff;
+}
+
+.about p, .vision p {
+    font-size: 1.5em;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    max-width: 480px;
+    margin: 2em auto;
+    padding: 2em;
+    text-align: left;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0;
+}
+
+.card ul li {
+    margin-bottom: 0.5em;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.card h3 {
+    margin-top: 1em;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.card h3 span {
+    color: green;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 1em;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.booking-form label {
+    font-weight: bold;
+    font-size: 1em;
+    color: #333;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="email"],
+.booking-form input[type="password"],
+.booking-form input[type="number"],
+.booking-form select {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.booking-form button {
+    align-self: flex-end;
+    padding: 0.8em 2em;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.booking-form button:hover {
+    background: #0056b3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Tanent options styles */
+.tanent-options {
+    display: flex;
+    gap: 1.5em;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.tanent-options .cta-btn {
+    padding: 1em 2em;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.tanent-options .cta-btn:hover {
+    background: #0056b3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* AddProperty form styles */
+.add-property-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 2em;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    max-width: 600px;
+    margin: 2em auto;
+}
+
+.add-property-form label {
+    font-weight: bold;
+    font-size: 1em;
+    color: #333;
+}
+
+.add-property-form input[type="text"],
+.add-property-form input[type="number"],
+.add-property-form input[type="file"],
+.add-property-form select {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.add-property-form input:focus,
+.add-property-form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.add-property-form button {
+    align-self: flex-end;
+    padding: 0.8em 2em;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.add-property-form button:hover {
+    background: #0056b3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-property-form input[type="text"] {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.add-property-form input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+
+
+
+/* Properties table styles */
+.properties-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em auto;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+.properties-table thead {
+    background: #007bff;
+    color: #fff;
+}
+
+.properties-table th, .properties-table td {
+    padding: 1em;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.properties-table th {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.properties-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.properties-table img {
+    width: 100px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.properties-table a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.properties-table a:hover {
+    color: #0056b3;
+}
+
+.properties-table td[colspan="6"] {
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+    padding: 2em;
+}

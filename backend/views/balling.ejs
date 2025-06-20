@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Summary</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Booking Summary</h1>
+        <%- include('partials/navbar') %>
+        <hr>
+    </header>
+    <main>
+        <div class="card">
+            <h2>Details</h2>
+            <ul>
+                <li><strong>Category:</strong> <%= balling.category %></li>
+                <li><strong>Description:</strong> <%= balling.description %></li>
+                <li><strong>Size:</strong> <%= balling.size %></li>
+                <li><strong>Duration:</strong> <%= balling.duration %> days</li>
+            </ul>
+            <h3>Total Cost: <span style="color:green;"><%= cost %></span></h3>
+        </div>
+    </main>
+    <footer>
+        <hr>
+        <p>&copy; <%= new Date().getFullYear() %> Booking App</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking App - Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Booking App</h1>
+        <%- include('partials/navbar') %>
+        <hr>
+    </header>
+    <main class="home-main">
+        <section class="hero">
+            <h2>Your Trusted Partner for Smart Storage & Booking</h2>
+            <p>
+                At <span class="brand">Booking App</span>, we make booking and managing your storage needs simple, secure, and efficient. Whether you need to store vehicles, furniture, kitchen stuff, or anything else, our platform is designed to give you peace of mind and flexibility.
+            </p>
+            <% if (user && user.role === "Tanent") { %>
+                <div class="tanent-options">
+                    <a href="/booking" class="cta-btn">Book Storage</a>
+                    <a href="/properties" class="cta-btn">See Listed Properties</a>
+                </div>
+            <% } %>
+        </section>
+        <section class="about">
+            <h3>About Our Company</h3>
+            <p>
+                Founded in 2024, Booking App is committed to revolutionizing the way you manage your storage and logistics. Our team is passionate about providing seamless, user-friendly solutions for individuals and businesses alike.
+            </p>
+        </section>
+        <section class="vision">
+            <h3>Our Vision</h3>
+            <p>
+                To be the leading platform for hassle-free, reliable, and innovative booking and storage services. We envision a world where everyone can access secure storage and logistics with just a few clicks.
+            </p>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        <p>&copy; <%= new Date().getFullYear() %> Booking App</p>
+    </footer>
+</body>
+</html>
