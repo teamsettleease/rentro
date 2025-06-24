@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
 
 const connectToMongoDb = require("./connect.js");
 const bookingRoute = require("./routes/route.booking.js");
@@ -12,14 +13,27 @@ const listAllProperties = require("./routes/route.listProperties.js");
 const { checkForAuthenticationCookie, restrictToLoggedInUser, restrictToRole } = require("./middlewares/middleware.authentication");
 
 
+
+
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
 
+const cors = require('cors');
+app.use(cors({
+  origin: 'http://localhost:3000', // or '*'
+  credentials: true
+}));
+
+
 //database connection 
-connectToMongoDb(process.env.MONGOOSEURL)
-.then(()=> console.log("Database Connected"));
+// connectToMongoDb(process.env.MONGOOSEURL)
+// .then(()=> console.log("Database Connected"));
+
+//connection to docker 
+mongoose.connect(process.env.MONGOOSEURL)
+
 
 
 //middleware for ejs frontend
@@ -64,5 +78,3 @@ app.listen(PORT, ()=>{
     console.log(`Server running at port:${PORT}`);
     
 })
-
-

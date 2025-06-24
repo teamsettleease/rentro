@@ -7,7 +7,9 @@ function generateUserToken(user){
         email: user.email,
         profileImageUrl: user.profileImageUrl,
         role: user.role,
-        fullName: user.fullName
+        firstname: user.firstname,
+        lastname: user.lastname,
+        username: user.username
     }
     const token = JWT.sign(payload, SECRET);
     return token;
@@ -27,4 +29,4 @@ function validateToken(token) {
 module.exports = {
     generateUserToken,
     validateToken
-}
+} 

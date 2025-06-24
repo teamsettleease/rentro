@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///D:/CodeXZone/Projects/rentro/frontend/src/app/admin-dashboard/messages/loading.tsx"],"sourcesContent":["export default function Loading() {\r\n  return null\r\n}\r\n"],"names":[],"mappings":";;;AAAe,SAAS;IACtB,OAAO;AACT","debugId":null}}]
+}

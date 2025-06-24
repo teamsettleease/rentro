@@ -3,7 +3,15 @@ const {createHmac, randomBytes} = require("crypto");
 const { generateUserToken } = require("../services/services.authentication");
 
 const userSchema = new Schema({
-    fullName:{
+    fistname:{
+        type:String,
+        required:true
+    },
+    lastname:{
+        type:String,
+        required:true
+    },
+    username:{
         type:String,
         required:true
     },

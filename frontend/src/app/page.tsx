@@ -1,9 +1,9 @@
-import { Navigation } from "@/components/navigation"
-import { HeroSection } from "@/components/hero-section"
-import { SearchSection } from "@/components/search-section"
-import { CTASection } from "@/components/cta-section"
-import { FeaturesSection } from "@/components/features-section"
-import { ResponsiveBackground } from "@/components/responsive-background"
+import { Navigation } from "@/components/hero-page/navigation"
+import { HeroSection } from "@/components/hero-page/hero-section"
+import { SearchSection } from "@/components/hero-page/search-section"
+import { CTASection } from "@/components/hero-page/cta-section"
+import { FeaturesSection } from "@/components/hero-page/features-section"
+import { ResponsiveBackground } from "@/components/hero-page/responsive-background"
 
 export default function HomePage() {
   return (
