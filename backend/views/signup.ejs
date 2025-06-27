@@ -1,48 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Sign Up</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
     <header>
-        <h1>Sign Up</h1>
-        <%- include('partials/navbar') %>
-        <hr>
+      <h1>Sign Up</h1>
+      <%- include('partials/navbar') %>
+      <hr />
     </header>
     <main>
-        <div class="card">
-            <form action="/user/signup" method="POST" class="booking-form">
-                <div class="form-row">
-                    <label for="fullName">Full Name:</label>
-                    <input type="text" name="fullName" id="fullName" required>
-                </div>
-                <div class="form-row">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" required>
-                </div>
-                <div class="form-row">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" id="password" required>
-                </div>
-                <div class="form-row">
-                    <label for="role">Role:</label>
-                    <select name="role" id="role" required>
-                        <option value="Tanent">Tanent</option>
-                        <option value="Landlord">Landlord</option>
-                        <option value="Enterprise">Enterprise</option>
-                    </select>
-                </div>
-                <div class="form-row">
-                    <button type="submit">Sign Up</button>
-                </div>
-            </form>
+      <div class="card">
+        <form action="/user/signup" method="POST" class="booking-form">
+          <div class="form-row">
+            <label for="fullName">Full Name:</label>
+            <input type="text" name="fullName" id="fullName" required />
+          </div>
+          <div class="form-row">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div class="form-row">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+          <div class="form-row">
+            <label for="role">Role:</label>
+            <select name="role" id="role" required>
+              <option value="Tanent">Tanent</option>
+              <option value="Landlord">Landlord</option>
+              <option value="Enterprise">Enterprise</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <button type="submit">Sign Up</button>
+          </div>
+        </form>
+        <hr />
+        <div class="form-row">
+          <a
+            href="/user/auth/google"
+            class="google-login-button"
+            style="
+              text-decoration: none;
+              display: inline-block;
+              padding: 10px 20px;
+              background-color: #4285f4;
+              color: white;
+              border-radius: 5px;
+              text-align: center;
+            "
+          >
+            signup with Google
+          </a>
         </div>
+      </div>
     </main>
     <footer>
-        <hr>
-        <p>&copy; <%= new Date().getFullYear() %> Booking App</p>
+      <hr />
+      <p>&copy; <%= new Date().getFullYear() %> Booking App</p>
     </footer>
-</body>
+  </body>
 </html>

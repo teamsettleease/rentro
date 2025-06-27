@@ -1,5 +1,5 @@
 const express = require("express");
-const dotenv = require("dotenv");
+require('dotenv').config();
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
@@ -10,9 +10,9 @@ const userRoute = require("./routes/router.user.js");
 const landlordRoute = require("./routes/route.landlordProperty.js");
 const listAllProperties = require("./routes/route.listProperties.js");
 const { checkForAuthenticationCookie, restrictToLoggedInUser, restrictToRole } = require("./middlewares/middleware.authentication");
+const passport = require('./config/passport.js')
+const session = require("express-session");
 
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
@@ -37,6 +37,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
 
+//session for oauth
+app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Middleware to make user available in all views
 app.use((req, res, next) => {
@@ -52,7 +57,6 @@ app.use("/booking",restrictToLoggedInUser("token"), bookingRoute);
 app.use("/balling",restrictToLoggedInUser("token"), ballingRoute);
 app.use("/landlord",restrictToLoggedInUser("token"),restrictToRole("Landlord"), landlordRoute)
 app.use("/user", userRoute);
-
 
 
 

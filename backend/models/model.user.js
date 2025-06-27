@@ -26,7 +26,7 @@ const userSchema = new Schema({
     role:{
         type:String,
         enum:["Tanent", "Landlord", "Enterprise"],
-        default: "Tanent"
+        default: null
     },
         isAdmin: {
         type: Boolean,
