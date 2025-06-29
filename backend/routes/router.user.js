@@ -55,6 +55,13 @@ router.post("/signup", async (req, res) => {
     role: role,
   });
 
+  // Send welcome email
+  await sendEmail({
+    email: user.email,
+    subject: "Welcome to Rento!",
+    message: `Hi ${user.fullName},\n\nWelcome to Rento! Your account has been created successfully.\n\nEnjoy our service!`,
+  });
+
   res.redirect("/user/signin");
 });
 
@@ -171,7 +178,7 @@ router.post("/reset-password", async (req, res) => {
   if (!user) {
     return res.render("reset-password", { error: "Invalid or expired token." });
   }
-  
+
   user.password = password;
   user.resetPasswordToken = undefined;
   user.resetPasswordExpires = undefined;
