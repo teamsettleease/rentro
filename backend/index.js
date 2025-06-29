@@ -37,7 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
 
-//session for oauth
+
+
+//for google oauth
 app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -59,14 +61,10 @@ app.use("/landlord",restrictToLoggedInUser("token"),restrictToRole("Landlord"), 
 app.use("/user", userRoute);
 
 
-
 app.get("/", (req, res)=>{
     return res.render("home");
 })
 
 app.listen(PORT, ()=>{
     console.log(`Server running at port:${PORT}`);
-    
 })
-
-

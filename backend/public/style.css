@@ -428,3 +428,29 @@ footer {
     color: #333;
     padding: 2em;
 }
+
+
+.forgot-password-btn {
+    display: inline-block;
+    margin-top: 0.5em;
+    color: #007bff;
+    background: none;
+    border: none;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.5em 1.2em;
+    border-radius: 5px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,123,255,0.08);
+    letter-spacing: 0.5px;
+}
+
+.forgot-password-btn:hover,
+.forgot-password-btn:focus {
+    background: #e6f0ff;
+    color: #0056b3;
+    text-decoration: underline;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.15);
+}
