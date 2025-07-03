@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Select Role</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Select Your Role</h1>
+      <%- include('partials/navbar') %>
+      <hr />
+    </header>
+    <main>
+      <div class="card">
+        <form action="/user/select-role" method="POST" class="booking-form">
+          <div class="form-row">
+            <label for="role">Choose your role:</label>
+            <select name="role" id="role" required>
+              <option value="">--Select Role--</option>
+              <option value="Tanent">Tanent</option>
+              <option value="Landlord">Landlord</option>
+              <option value="Enterprise">Enterprise</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <button type="submit">Continue</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <hr />
+      <p>&copy; <%= new Date().getFullYear() %> Booking App</p>
+    </footer>
+  </body>
+</html>

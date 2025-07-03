@@ -1,0 +1,25 @@
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="/">Home</a>
+    </div>
+    <div class="navbar-right">
+        <% if (user) { %>
+            <span class="user-name"><%= user.fullName %></span>
+            <% if (user.role === "Tanent") { %>
+                <a href="/booking">Book Storage</a>
+                <a href="/properties">Listed Properties</a>
+            <% } %>
+            <% if (user.role === "Landlord") { %>
+                <a href="/landlord/properties">Manage Properties</a>
+                <a href="/landlord/add-property">Add Property</a>
+            <% } %>
+            <% if (user.role === "Enterprise") { %>
+                <a href="/enterprise/storage">Enterprise Storage</a>
+            <% } %>
+            <a href="/user/signout">Sign Out</a>
+        <% } else { %>
+            <a href="/user/signin">Sign In</a>
+            <a href="/user/signup">Sign Up</a>
+        <% } %>
+    </div>
+</nav>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Properties</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <header>
+        <h1>Properties</h1>
+        <%- include('partials/navbar') %>
+        <hr>
+    </header>
+    <table class="properties-table">
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Size</th>
+          <th>Rent</th>
+          <th>Available</th>
+          <th>Contact</th>
+          <th>Images</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (properties && properties.length > 0) { %>
+        <!-- Check if properties exist -->
+        <% properties.forEach(property => { %>
+        <tr>
+          <td><%= property.address %></td>
+          <td><%= property.size %></td>
+          <td><%= property.rent %></td>
+          <td><%= property.available ? "Yes" : "No" %></td>
+          <td><%= property.contact %></td>
+          <td>
+            <% property.photo.forEach(image => { %>
+            <img
+              src="<%= image %>"
+              alt="Property Image"
+              style="width: 100px; height: auto"
+            />
+            <% }) %>
+          </td>
+        </tr>
+        <% }) %> <% } else { %>
+        <tr>
+          <td colspan="7">No properties found.</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
