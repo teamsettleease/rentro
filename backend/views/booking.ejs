@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Booking</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>New Booking</h1>
+        <%- include('partials/navbar') %>
+        <hr>
+    </header>
+    <main>
+        <div class="card">
+            <form action="/booking" method="POST" class="booking-form">
+                <div class="form-row">
+                    <label for="category">Category:</label>
+                    <select name="category" id="category" required>
+                        <option value="vahicle">Vahicle</option>
+                        <option value="forniture">Forniture</option>
+                        <option value="kitchen stuff">Kitchen Stuff</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" id="description" required>
+                </div>
+                <div class="form-row">
+                    <label for="size">Size:</label>
+                    <select name="size" id="size">
+                        <option value="">Select size</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="duration">Duration (days):</label>
+                    <input type="number" name="duration" id="duration" min="1">
+                </div>
+                <div class="form-row">
+                    <button type="submit">Create Booking</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <hr>
+        <p>&copy; <%= new Date().getFullYear() %> Booking App</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign In</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sign In</h1>
+      <%- include('partials/navbar') %>
+      <hr />
+    </header>
+    <main>
+      <div class="card">
+        <% if (typeof error !== "undefined") { %>
+        <div class="error-message" style="color: #b00020; margin-bottom: 1em">
+          <%= error %>
+        </div>
+        <% } %>
+        <form action="/user/signin" method="POST" class="booking-form">
+          <div class="form-row">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div class="form-row">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+          <div class="form-row">
+            <button type="submit">Sign In</button>
+          </div>
+          <div class="form-row">
+            <a href="/user/forgot-password" class="forgot-password-btn">Forgot Password?</a>
+          </div>
+        </form>
+        <hr />
+        <div class="form-row">
+          <a
+            href="/user/auth/google"
+            class="google-login-button"
+            style="
+              text-decoration: none;
+              display: inline-block;
+              padding: 10px 20px;
+              background-color: #4285f4;
+              color: white;
+              border-radius: 5px;
+              text-align: center;
+            "
+          >
+            Login with Google
+          </a>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <hr />
+      <p>&copy; <%= new Date().getFullYear() %> Booking App</p>
+    </footer>
+  </body>
