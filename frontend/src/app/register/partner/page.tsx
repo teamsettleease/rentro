@@ -1,6 +1,6 @@
 import { GalleryVerticalEnd } from "lucide-react"
 
-import { PartnerForm } from "@/components/partner-form"
+import { PartnerForm } from "@/components/register/partner-form"
 
 export default function PartnerPage() {
   return (
