@@ -1,0 +1,24 @@
+{
+  "name": "rentro",
+  "version": "1.0.0",
+  "description": "Flexible Storage and Housing Solutions",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "build": "concurrently \"npm run build --prefix backend\" \"npm run build --prefix frontend\"",
+    "start": "concurrently \"npm run start --prefix backend\" \"npm run start --prefix frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teamsettleease/rentro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teamsettleease/rentro/issues"
+  },
+  "homepage": "https://github.com/teamsettleease/rentro#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
