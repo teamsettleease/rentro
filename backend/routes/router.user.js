@@ -14,8 +14,14 @@ router.get("/signin", (req, res) => {
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
   try {
+    const user = await User.findOne({ email });
+    if (!user) throw new Error("Incorrect password or email");
+    if (!user.isEmailVerified) {
+      return res.render("signin", {
+        error: "Please verify your email before signing in.",
+      });
+    }
     const token = await User.matchPasswordandGenerateToken(email, password);
-
     return res.cookie("token", token).render("home");
   } catch (err) {
     return res.render("signin", {
@@ -48,12 +54,49 @@ router.get("/signup", (req, res) => {
 
 router.post("/signup", async (req, res) => {
   const { fullName, email, password, role } = req.body;
-  await User.create({
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    return res.render("signup", {
+      error: "Email already registered. Please sign in or use another email.",
+    });
+  }
+  const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit OTP
+
+  const user = await User.create({
     fullName,
     email,
     password,
     role: role,
+    emailVerificationOTP: otp,
+    emailVerificationExpires: Date.now() + 10 * 60 * 1000, // 10 minutes
   });
+  // Send OTP email
+  await sendEmail({
+    email: user.email,
+    subject: "Your OTP Code",
+    message: `Hi ${user.fullName},\n\nYour OTP code is: ${otp}\n\nIt is valid for 10 minutes.`,
+  });
+
+  res.render("enter-otp", { email: user.email }); // Render OTP entry dialog/page
+});
+
+//handle OTP
+router.post("/verify-otp", async (req, res) => {
+  const { email, otp } = req.body;
+  const user = await User.findOne({
+    email,
+    emailVerificationOTP: otp,
+    emailVerificationExpires: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    return res.render("enter-otp", { email, error: "Invalid or expired OTP." });
+  }
+
+  user.isEmailVerified = true;
+  user.emailVerificationOTP = undefined;
+  user.emailVerificationExpires = undefined;
+  await user.save();
 
   // Send welcome email
   await sendEmail({
@@ -62,7 +105,34 @@ router.post("/signup", async (req, res) => {
     message: `Hi ${user.fullName},\n\nWelcome to Rento! Your account has been created successfully.\n\nEnjoy our service!`,
   });
 
-  res.redirect("/user/signin");
+  res.render("signin", { message: "Email verified! You can now sign in." });
+});
+
+//handel resend OTP
+router.post("/resend-otp", async (req, res) => {
+  const { email } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.render("enter-otp", { email, error: "User not found." });
+  }
+
+  // Generate new OTP
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  user.emailVerificationOTP = otp;
+  user.emailVerificationExpires = Date.now() + 10 * 60 * 1000; // 10 minutes
+  await user.save();
+
+  // Send OTP email
+  await sendEmail({
+    email: user.email,
+    subject: "Your OTP Code",
+    message: `Hi ${user.fullName},\n\nYour new OTP code is: ${otp}\n\nIt is valid for 10 minutes.`,
+  });
+
+  res.render("enter-otp", {
+    email,
+    message: "A new OTP has been sent to your email.",
+  });
 });
 
 //oauth section
@@ -77,6 +147,11 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/user/signin" }),
   (req, res) => {
+    if (!req.user.isEmailVerified) {
+      // Redirect to OTP entry page
+      return res.render("enter-otp", { email: req.user.email });
+    }
+
     if (!req.user.role) {
       req.session.tempUserId = req.user._id;
       return res.redirect("/user/select-role");

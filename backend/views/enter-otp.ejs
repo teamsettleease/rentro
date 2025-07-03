@@ -1,0 +1,13 @@
+<form action="/user/verify-otp" method="POST">
+  <input type="hidden" name="email" value="<%= email %>">
+  <label>Enter OTP sent to your email:</label>
+  <input type="text" name="otp" maxlength="6" required>
+  <button type="submit">Verify</button>
+</form>
+<form action="/user/resend-otp" method="POST" style="margin-top:10px;">
+  <input type="hidden" name="email" value="<%= email %>">
+  <button type="submit">Resend OTP</button>
+</form>
+<% if (typeof error !== 'undefined') { %>
+  <p style="color:red;"><%= error %></p>
+<% } %>
